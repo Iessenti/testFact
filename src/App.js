@@ -34,14 +34,15 @@ function App() {
   const [structuredArr, setStructuredArr] = useState(false)
   let checkedList = []
 
-  const handleChangeCheckbox = (a) => {
+  // обработка событий нажатия на checkbox
+  const handleChangeCheckbox = (a) => { // Добавление элемента
 
     checkedList.unshift(a)
     store.dispatch( action_add_new_value(checkedList) )
 
   }
 
-  const misclickCheckbox = (a) => {
+  const misclickCheckbox = (a) => { // удаление элемента
     
     for (var i = 0; i< checkedList.length; i++) {
       if (a == checkedList[i]) { checkedList.splice(i, 1); break }
@@ -51,17 +52,17 @@ function App() {
 
   }
 
-  const cleanState = () => {
+  const cleanState = () => { // очистка состояния
     store.dispatch( action_delete_value('') )
     createSelect(structuredArr)
   }
 
-  const moveState = (val) => {
+  const moveState = (val) => { // "движение" по состоянию, которое у меня, к сожалению, не получилось
     store.dispatch( action_move_value(val))
   }
 
 
-  const smoothArr = (arr) => {
+  const smoothArr = (arr) => { // задание 2
     let result = []
 
     for (var i = 0; i < arr.length; i++) {
@@ -78,7 +79,7 @@ function App() {
   }
 
 
-  const toStructureArr = (arr) => {
+  const toStructureArr = (arr) => { // задание 3
     let result = []
     let types = []
 
